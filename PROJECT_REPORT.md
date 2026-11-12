@@ -33,7 +33,36 @@ Company Email Agent 将邮件索引、文档检索和模型工具调用接入同
 - 长输出回归用模拟执行器验证两种预算下的真实 Agent 工具格式和上下文交接。3 项通过，包含拒绝只出现在助手命令中的标记。两项真实 Docker 用例已收集，未执行。
 - 模拟评估模块 8 项离线通过。发布副本实际 CLI 在发现只有 18 个角色时返回退出码 2，并列出缺失角色。显式子集会显示实际数量和按原规则计算的门槛。
 
-归档、实机 Docker 和 Live 用例只做筛选与收集检查，未计入通过结果。 [测试命令与本地资源](README.md#测试)
+归档、实机 Docker 和 Live 用例只做筛选与收集检查，未计入通过结果。
+
+## 本地配置与测试
+
+默认离线测试运行 `uv run pytest`。安装依赖、试跑文档检索和启动会话的步骤见 [快速开始](README.md#快速开始)。
+
+现有 `CS329Z_*` 环境变量可设置模型、缓存和预算。聊天记录写入 `runs/`。模型缓存、用量账本和默认记忆保存在 `.lm_cache/`。可运行 `uv run python -m company_email_agent.llm` 查看本地用量。
+
+| 范围 | 运行命令 |
+| --- | --- |
+| 仅检查默认收集 | `uv run pytest --collect-only` |
+| 邮件归档离线测试 | `uv run pytest -m "archive and not docker and not live"` |
+| Docker 离线集成 | `uv run pytest -m "docker and not live"` |
+| 私有历史回复重放 | `uv run pytest -m "historical_fixture and not live"` |
+| Live 测试 | `uv run pytest -m "live"` |
+| 同时依赖语料和 Docker 的 Live 测试 | `uv run pytest -m "live and docker and archive"` |
+
+`archive`、`docker`、`historical_fixture` 和 `live` 可以组合。为离线集成写自定义筛选时，请保留 `not live`。向任一命令加 `--collect-only` 可预览选中的用例。
+
+| 本地资源 | 适用范围 |
+| --- | --- |
+| 解压的 `data/emails/emails.jsonl` | 归档检索、摘要等测试 |
+| 校验过的 `data/emails.jsonl.gz` 和本机 Docker 固定配置 | 实际执行命令的集成测试 |
+| `tests/fixtures/historical/dsml_memory_trace.json`、`tests/fixtures/historical/memory_alias_live_trace.json` | 可选的原始回复重放。将已有原件放在本地忽略目录。默认测试用各自的公开合成夹具。 |
+| 本地 `priority_gold.json`、`terminal_questions.json` | Priority Live 和 Terminal Live 的原题集 |
+| `09-coding-no-python.json`、`20-coding-big-listing.json` | 完整评估缺少的两个原始角色。副本含其余 18 个角色。 |
+
+模拟评估默认预检原始 20 角色名单，缺失时在请求模型前停止。可显式使用 `--slice` 或 `--only` 运行子集，结果会显示实际角色数及按原规则计算的门槛。 [模拟评估说明](company_email_agent/simulation/README.md)
+
+Live 测试需要用户自行配置模型密钥并会产生 API 用量。Docker 实机安全探针需要另外启用 `CARDINAL_DOCKER_PROBES`。 [Docker 配置](docker/terminal/README.md)
 
 ## 归属
 
