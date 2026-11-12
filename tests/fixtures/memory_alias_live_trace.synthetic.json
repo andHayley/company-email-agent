@@ -1,0 +1,11 @@
+{
+  "source": "synthetic",
+  "firmware_fact": "The spec refers to the EmberOS 3 firmware specification.",
+  "api_fact": "The spec refers to the GridLens Ingestion API Specification.",
+  "alias_question": "What revision is the spec?",
+  "broad_search": "```tool_call\n{\"name\":\"search_docs\",\"args\":{\"query\":\"spec revision\"}}\n```",
+  "broad_answer": "The broad search completed.",
+  "direct_question": "For the spec, who authored the GridLens Ingestion API Specification?",
+  "direct_search": "```tool_call\n{\"name\":\"search_docs\",\"args\":{\"query\":\"GridLens Ingestion API Specification\"}}\n```",
+  "direct_answer": "The named specification was located."
+}

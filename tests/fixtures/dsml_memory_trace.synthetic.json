@@ -1,0 +1,10 @@
+{
+  "source": "synthetic",
+  "first_message": "Save this document alias for the test.",
+  "second_message": "What revision is the spec?",
+  "remember": "```tool_call\n{\"name\":\"remember\",\"args\":{\"fact\":\"The spec refers to the GridLens Ingestion API Specification.\"}}\n```",
+  "stored_acknowledgement": "The test alias was saved.",
+  "recall": "```tool_call\n{\"name\":\"recall\",\"args\":{\"query\":\"the spec\"}}\n```",
+  "native_calls": "<｜｜DSML｜｜ calls>\n<｜｜DSML｜｜ invoke name=\"search_docs\">\n<｜｜DSML｜｜ parameter name=\"query\">synthetic query</｜｜DSML｜｜ parameter>\n</｜｜DSML｜｜ invoke>\n</｜｜DSML｜｜ calls>",
+  "json_block": "<｜｜DSML｜｜ tool_call>\n{\"name\": \"search_docs\", \"args\": {\"query\": \"GridLens Ingestion API Specification\", \"k\":5}}\n</｜｜DSML｜｜ tool_call>"
+}
