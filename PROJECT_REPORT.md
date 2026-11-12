@@ -37,4 +37,4 @@ Company Email Agent 将邮件索引、文档检索和模型工具调用接入同
 
 ## 归属
 
-项目基于 Stanford [CS329Z Assignment 1 Harness](https://github.com/cs329z/assignment1-harness)。课程框架、作者、贡献者与 MIT 许可证归属见 [README](README.md) 和 [LICENSE](LICENSE)。
+项目源自 Stanford [CS329Z Engineering AI Agents 的 Assignment 1 Harness](https://github.com/cs329z/assignment1-harness)。课程框架由 Michael Ryan 设计。感谢 Houjun (Jack) Liu、Owen Queen、Shreyas Sharma 和 Anantharaman Iyer 试做并反馈。保留原有 [MIT License](LICENSE) 和版权声明。Docker 终端的 Alpine 基础镜像和系统软件包保留各自的上游归属。

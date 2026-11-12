@@ -66,7 +66,3 @@ uv run pytest
 模拟评估默认预检原始 20 角色名单，缺失时在请求模型前停止。可显式使用 `--slice` 或 `--only` 运行子集，结果会显示实际角色数及按原规则计算的门槛。 [模拟评估说明](company_email_agent/simulation/README.md)
 
 Live 测试需要用户自行配置模型密钥并会产生 API 用量。Docker 实机安全探针需要另外启用 `CARDINAL_DOCKER_PROBES`。 [Docker 配置](docker/terminal/README.md)
-
-## 上游与许可证
-
-项目源自 Stanford [CS329Z Engineering AI Agents 的 Assignment 1 Harness](https://github.com/cs329z/assignment1-harness)。课程框架由 Michael Ryan 设计。感谢 Houjun (Jack) Liu、Owen Queen、Shreyas Sharma 和 Anantharaman Iyer 试做并反馈。保留原有 [MIT License](LICENSE) 和版权声明。Docker 终端的 Alpine 基础镜像和系统软件包保留各自的上游归属。
